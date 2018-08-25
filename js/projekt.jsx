@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(`https://api.unsplash.com/search/photos/?query=${this.props.searchTerm}&client_id=107ab9049ae72d712b8e0cd33ebb97484e4f825e1b7b68b12130c30d950cadb4`)
                     .then(r => r.json())
                     .then(data => {
+                        console.log("hej");
                         if(data.results.length===0) {
                             this.setState({
                                 loading: false,
@@ -43,10 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             for(let i=0;i<data.results.length;i++){
                                 array.push(data.results[i].urls.small);
                             }
-                            this.setState({
-                                urlArray: [...array],
-                                loading: true,
-                            });
+                            if(array[0]!=this.state.urlArray[0]){
+                                this.setState({
+                                    urlArray: [...array],
+                                    loading: true,
+                                });
+                            }
                         }
 
                     });

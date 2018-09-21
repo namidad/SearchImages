@@ -5,10 +5,10 @@ import Particles from 'react-particles-js'
 const particleOptions = {
             particles: {
                 number: {
-                    value: 150,
+                    value: 50,
                     density: {
                         enable: true,
-                        value_area: 800,
+                        value_area: 600,
                     }
                 }
             }
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(`https://api.unsplash.com/search/photos/?query=${this.props.searchTerm}&client_id=107ab9049ae72d712b8e0cd33ebb97484e4f825e1b7b68b12130c30d950cadb4`)
                     .then(r => r.json())
                     .then(data => {
-                        console.log("hej");
                         if(data.results.length===0) {
                             this.setState({
                                 loading: false,
